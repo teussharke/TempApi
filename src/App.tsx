@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { fetchWeather } from './lib/fetchWeather'
+
 import reactLogo from './assets/react.svg'
 import './App.css'
 
@@ -15,16 +16,20 @@ interface IWeather {
   sys: {
     country: string;
   };
- 
-  weather: 
 
+  weather: {
+    description: string;
+    icon: string;
+  }[];
 }
 
 export function App() {
   const [query, setQuery] = useState('');
   const [weather, setWeather] = useState<IWeather>({} as IWeather);
 
-  const serch = async (e) => {
+  console.log(weather);
+
+  const serch = async (e: any) => {
     if (e.key === 'Enter') {
       const data = await fetchWeather(query);
       setWeather(data);
@@ -39,10 +44,15 @@ export function App() {
       <input
         type="text"
         className="search"
-        placeholder="Pesquise sua cidade"
+        placeholder="Digite a sua ciade"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        onKeyDown={serch} />
+        onKeyDown={serch}
+
+      />
+
+
+
       {weather.main && (
         <div className='city'>
           <h2 className='city-name'>
