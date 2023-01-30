@@ -2,7 +2,7 @@ html,
 body,
 #root {
   font: 0.9rem sans-serif;
-  background: url(assets/bg.jpg);
+  background: url(public/bg.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
